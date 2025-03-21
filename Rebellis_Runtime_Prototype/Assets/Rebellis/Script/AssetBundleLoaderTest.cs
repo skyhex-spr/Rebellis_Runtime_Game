@@ -7,8 +7,8 @@ public class AssetBundleLoaderTest : MonoBehaviour
 
     public Animator animator;
     // URL to the AssetBundle (replace with your actual URL)
-    private string bundleURL = "https://bitnerdstudio.com/test/067d45f5-e28f-7424-8000-9ae7a9e11b43";
-    private string assetName = "067d45f5-e28f-7424-8000-9ae7a9e11b43"; // Replace with the actual asset name in the bundle
+    private string bundleURL = "https://rebellis-transaction-results.s3.eu-central-1.amazonaws.com/067dadb9-ab13-7ca4-8000-909a1101d9e6/067dadbb-046b-704a-8000-39089af19038";
+    private string assetName = "067dadb9-ab13-7ca4-8000-909a1101d9e6"; // Replace with the actual asset name in the bundle
 
     void Start()
     {

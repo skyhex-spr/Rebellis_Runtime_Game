@@ -11,6 +11,7 @@ public class PanelController : MonoBehaviour
     [SerializeField] private Button showButton;
     [SerializeField] private Button GenerateButton;
     [SerializeField] private Button closeButton;
+    [SerializeField] private TMP_InputField PromptViewText;
 
     [SerializeField] private float animationDuration = 0.1f;
 
@@ -24,8 +25,12 @@ public class PanelController : MonoBehaviour
     public bool IsPanelOpen;
     public bool IsOnprogress;
 
+    private GameManager _gameManager;
+
     private void Start()
     {
+
+        _gameManager = FindAnyObjectByType<GameManager>();
         // Save positions
         visiblePosition = panel.anchoredPosition;
         hiddenPosition = new Vector2(visiblePosition.x, -1500);
@@ -36,7 +41,7 @@ public class PanelController : MonoBehaviour
         // Button events
         showButton.onClick.AddListener(ShowPanel);
         closeButton.onClick.AddListener(ClosePanel);
-        GenerateButton.onClick.AddListener(ShowProggress);
+        GenerateButton.onClick.AddListener(StartGeneration);
     }
 
     private void ShowPanel()
@@ -61,8 +66,13 @@ public class PanelController : MonoBehaviour
         IsPanelOpen = false;
     }
 
-    public void ShowProggress()
+    public void StartGeneration()
     {
+        if (PromptViewText.text == string.Empty || string.IsNullOrWhiteSpace(PromptViewText.text))
+            return;
+
+        _gameManager.RebelisAPIHandler.SendPrompt(1, PromptViewText.text,1);
+
         ClosePanel();
 
         loadingSlider.transform.DOScale(1.8f, animationDuration).SetEase(Ease.InOutBounce);
@@ -75,7 +85,7 @@ public class PanelController : MonoBehaviour
     public void StartFakeLoading()
     {
         if (loadingCoroutine != null) StopCoroutine(loadingCoroutine);
-        loadingCoroutine = StartCoroutine(FakeLoad(0, 100, 5)); // Load to 40 in 40 seconds
+        loadingCoroutine = StartCoroutine(FakeLoad(0, 99, 30)); // Load to 40 in 40 seconds
         IsOnprogress = true;
     }
 
@@ -83,6 +93,15 @@ public class PanelController : MonoBehaviour
     {
         if (loadingCoroutine != null) StopCoroutine(loadingCoroutine);
         loadingCoroutine = StartCoroutine(FakeLoad(loadingSlider.value, 100, 1f)); // Force to 100 in 1 second
+    }
+
+    public void StopGenerateLoading()
+    {
+        if (loadingCoroutine != null)
+        StopCoroutine(loadingCoroutine);
+
+        loadingSlider.transform.DOScale(0, animationDuration).SetEase(Ease.InOutBounce);
+        IsOnprogress = false;
     }
 
     private IEnumerator FakeLoad(float start, float target, float duration)
@@ -106,6 +125,7 @@ public class PanelController : MonoBehaviour
           IsOnprogress = false;
         }
     }
+
 
     private void UpdatePercentage(float value)
     {

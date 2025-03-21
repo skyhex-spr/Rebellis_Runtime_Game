@@ -12,45 +12,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ad41a5204bc5644aac6c48cf61de5d8, type: 3}
   m_Name: RebellisSetting
   m_EditorClassIdentifier: 
-  username: 
-  password: 
+  email: skyhex.spr@gmail.com
+  password: 763K39jZFZqk
   userdata:
-    access_token: 
-    refresh_token: 
-    token_type: 
+    access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyMiIsImV4cCI6MTc0MjU0OTE4NywidHlwZSI6ImFjY2VzcyIsImlkIjoiMjIiLCJlbWFpbCI6InNreWhleC5zcHJAZ21haWwuY29tIiwiZmlyc3RfbmFtZSI6IiIsImxhc3RfbmFtZSI6IiIsImlzX2FjdGl2ZSI6dHJ1ZSwiaXNfc3VwZXJ1c2VyIjpmYWxzZX0.l7_GnpFZ5e4J9VSgpocOBY7ZmqmPodPW-UntrMj5zK4
+    refresh_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyMiIsImV4cCI6MTc0MzE1MDM4NywidHlwZSI6InJlZnJlc2gifQ.CNKGOvXzKwynOmeAJzmwARF8b9KKzDIGeHGYxn7yn0I
+    token_type: bearer
     user:
-      id: 0
-      email: 
+      id: 22
+      email: skyhex.spr@gmail.com
       first_name: 
       last_name: 
-      is_active: 0
+      is_active: 1
       credit:
-        balance: 0
-        id: 0
+        balance: 975
+        id: 22
   Rebelliprompts:
-    id: 
-    user_id: 0
-    worker_model_id: 0
-    prompt: 
-    repeat_number: 0
-    total_credit_usage: 0
+    id: 067dd22d-385e-70c6-8000-9d3f04d10a7c
+    user_id: 22
+    worker_model_id: 1
+    prompt: a person who walk forward slowly
+    repeat_number: 1
+    total_credit_usage: 1
     generate_fbx: 0
-    is_completed: 0
+    is_completed: 1
     is_active: 0
     worker_model:
-      id: 0
-      slug: 
-      name: 
-      unit_price: 0
-      description: 
-      worker_model_type: 
+      id: 1
+      slug: model-1
+      name: model 1
+      unit_price: 2
+      description: first model
+      worker_model_type: text_to_motion
     prompt_response:
-      created_at: 
-      updated_at: 
-      id: 
-      prompt_request_id: 
-      prompt_response_id: 
-      prompt_request_step: []
+      created_at: 2025-03-21T08:27:19.085256
+      updated_at: 2025-03-21T08:27:19.085262
+      id: 067dd22e-715d-73f9-8000-3a2f8ea57340
+      prompt_request_id: 067dd22d-385e-70c6-8000-9d3f04d10a7c
+      prompt_response_id: 067dd22d-3aee-7b2f-8000-c0c08197e60d
+      prompt_request_step:
+      - id: 067dd22e-716a-7bc9-8000-8a83ffff6c8f
+        prompt_request_id: 067dd22d-385e-70c6-8000-9d3f04d10a7c
+        prompt_response_id: 067dd22e-715d-73f9-8000-3a2f8ea57340
+        step_number: 1
+        mp4: https://rebellis-transaction-results.s3.eu-central-1.amazonaws.com/067dd22d-385e-70c6-8000-9d3f04d10a7c/067dd22d-385e-70c6-8000-9d3f04d10a7c_1.mp4
+        fbx: 
+        unity: 
   AnimationData:
     id: 
     user_id: 0
@@ -75,4 +82,3 @@ MonoBehaviour:
       prompt_request_id: 
       prompt_response_id: 
       prompt_request_step: []
-  Intial: 1

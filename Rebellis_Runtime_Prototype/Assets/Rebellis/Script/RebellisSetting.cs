@@ -7,36 +7,15 @@ namespace Rebellis
     {
         public static string BASEAPI = "https://api.rebellis.ai";
 
-        public string username;
+        public string email;
 
         public string password;
-
-        private string token;
 
         public RebellisUserModel userdata;
 
         public Rebelliprompts Rebelliprompts;
 
-        public AnimationData AnimationData;
+       // public AnimationData AnimationData;
 
-        public string GetUsername()
-        {
-            return username;
-        }
-
-        public string GetPassword()
-        {
-            return password;
-        }
-
-        public string GetToken()
-        {
-            return token;
-        }
-
-        public void SetToken(string token)
-        {
-            this.token = token;
-        }
     }
 }

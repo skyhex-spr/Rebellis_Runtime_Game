@@ -5,10 +5,14 @@ public class GameManager : MonoBehaviour
     public PanelController PanelController;
     public CameraController CameraController;
 
+    [HideInInspector]
+    public RebelisAPIHandler RebelisAPIHandler;
+
     private void Awake()
     {
+        RebelisAPIHandler = GetComponent<RebelisAPIHandler>();
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
         
