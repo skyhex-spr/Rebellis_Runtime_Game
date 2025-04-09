@@ -17,6 +17,7 @@ public class RebelisAPIHandler : MonoBehaviour
     public RebellisSetting setting;
 
     public UnityEvent<string,string> OnUnityFileReady;
+    public UnityEvent<int> OnProgressStatusChanged;
 
     public void Login(Action<string> callback)
     {
@@ -55,6 +56,7 @@ public class RebelisAPIHandler : MonoBehaviour
     public void SendPrompt(int workerModelId, string prompt, int repeatNumber)
     {
         StartCoroutine(SendPromptCoroutine(setting.userdata.access_token, workerModelId, prompt, repeatNumber));
+        OnProgressStatusChanged?.Invoke(5);
     }
 
     private IEnumerator SendPromptCoroutine(string token, int workerModelId, string prompt, int repeatNumber)
@@ -110,6 +112,7 @@ public class RebelisAPIHandler : MonoBehaviour
                         {
                             yield return new WaitForSeconds(0.75f);
                             StartCoroutine(FetchPromptCoroutine(state));
+                            OnProgressStatusChanged?.Invoke(40);
                         }
                         else
                         {
@@ -121,10 +124,11 @@ public class RebelisAPIHandler : MonoBehaviour
                         {
                             yield return new WaitForSeconds(0.75f);
                             StartCoroutine(FetchPromptCoroutine(state));
+                            OnProgressStatusChanged?.Invoke(60);
                         }
                         else
                         {
-                            StartCoroutine(FetchUnityFile());    
+                            StartCoroutine(FetchUnityFile());
                         }
                         break;
                     case FetchState.Unity:
@@ -132,6 +136,7 @@ public class RebelisAPIHandler : MonoBehaviour
                         {
                             yield return new WaitForSeconds(0.75f);
                             StartCoroutine(FetchPromptCoroutine(state));
+                            OnProgressStatusChanged?.Invoke(80);
                         }
                         else
                         {

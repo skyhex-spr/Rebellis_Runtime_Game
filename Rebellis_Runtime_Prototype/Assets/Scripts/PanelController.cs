@@ -27,10 +27,15 @@ public class PanelController : MonoBehaviour
 
     private GameManager _gameManager;
 
+    private int targetProgress;
+
     private void Start()
     {
 
         _gameManager = FindAnyObjectByType<GameManager>();
+
+
+        _gameManager.RebelisAPIHandler.OnProgressStatusChanged.AddListener(OnProgressUpdate);
         // Save positions
         visiblePosition = panel.anchoredPosition;
         hiddenPosition = new Vector2(visiblePosition.x, -1500);
@@ -71,22 +76,35 @@ public class PanelController : MonoBehaviour
         if (PromptViewText.text == string.Empty || string.IsNullOrWhiteSpace(PromptViewText.text))
             return;
 
+        if (_gameManager.AreAllDeselctedAvatars())
+            _gameManager.SelectAllAvatars();
+
+        UpdatePercentage(0);
+        loadingSlider.value = 0;
+        targetProgress = 0;
+
         _gameManager.RebelisAPIHandler.SendPrompt(1, PromptViewText.text,1);
 
         ClosePanel();
 
         loadingSlider.transform.DOScale(1.8f, animationDuration).SetEase(Ease.InOutBounce);
-
-        UpdatePercentage(0);
-        StartFakeLoading();
     }
 
-
-    public void StartFakeLoading()
+    private void OnProgressUpdate(int percentage)
     {
-        if (loadingCoroutine != null) StopCoroutine(loadingCoroutine);
-        loadingCoroutine = StartCoroutine(FakeLoad(0, 99, 30)); // Load to 40 in 40 seconds
-        IsOnprogress = true;
+
+        if (percentage > targetProgress)
+        {
+            loadingSlider.value = targetProgress;
+            UpdatePercentage(targetProgress);
+
+            targetProgress = percentage;
+            if (loadingCoroutine != null) StopCoroutine(loadingCoroutine);
+            loadingCoroutine = StartCoroutine(FakeLoad(loadingSlider.value, percentage, 15)); 
+            IsOnprogress = true;
+        }
+
+ 
     }
 
     public void ForceFill()

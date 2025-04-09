@@ -1,0 +1,2 @@
+D:\Repositiries\RebellisGit\Rebellis_Runtime_Game\Rebellis_Runtime_Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\CMakeLists.txt
+D:\Repositiries\RebellisGit\Rebellis_Runtime_Game\Rebellis_Runtime_Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\CMakeLists.txt

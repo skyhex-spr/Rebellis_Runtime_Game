@@ -1,3 +1,5 @@
+using HighlightPlus;
+using NUnit.Framework.Internal;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -11,29 +13,43 @@ public class RebellisAnimatorController : MonoBehaviour
     private string assetName = "067dadb9-ab13-7ca4-8000-909a1101d9e6"; // Replace with the actual asset name in the bundle
 
     private GameManager _gameManager;
+    private HighlightEffect _effect;
 
+    public bool Selected;
     void Start()
     {
         animator = GetComponent<Animator>();
 
         _gameManager = FindAnyObjectByType<GameManager>();
 
+        _effect = GetComponent<HighlightEffect>();
+
         _gameManager.RebelisAPIHandler.OnUnityFileReady.AddListener(OnNewAnimationArrived);
-        // Start the coroutine to load the AssetBundle
-        //StartCoroutine(LoadAssetBundleFromURL(bundleURL));
     }
 
-    private void OnNewAnimationArrived(string url,string name)
+    public void ToggleAvatar(bool forceTrue = false)
+    {
+        _effect.highlighted = !_effect.highlighted;
+
+        if (forceTrue)
+        {
+            _effect.highlighted = true;
+        }
+
+        Selected = _effect.highlighted;
+    }
+
+    private void OnNewAnimationArrived(string url, string name)
     {
         bundleURL = url;
         assetName = name;
         StartCoroutine(LoadAssetBundleFromURL(bundleURL));
-        _gameManager.PanelController.ForceFill();
     }
 
     IEnumerator LoadAssetBundleFromURL(string url)
     {
-        yield return new WaitForSeconds(1);
+        _gameManager.RebelisAPIHandler?.OnProgressStatusChanged?.Invoke(99);
+
         Debug.Log($"Attempting to load AssetBundle from URL: {url}");
         UnityWebRequest request = UnityWebRequestAssetBundle.GetAssetBundle(url);
 
@@ -61,14 +77,21 @@ public class RebellisAnimatorController : MonoBehaviour
         AnimationClip asset = bundle.LoadAsset<AnimationClip>(assetName);
         if (asset != null)
         {
-            Debug.Log($"Successfully loaded asset: {assetName}");
+            if (Selected)
+            {
+                Debug.Log($"Successfully loaded asset: {assetName}");
 
-            // Apply the AnimationClip to the Animator
-            AnimatorOverrideController overrideController = new AnimatorOverrideController(animator.runtimeAnimatorController);
-            overrideController["rebel"] = asset; // Replace "rebel" with your original clip name
-            animator.runtimeAnimatorController = overrideController;
+                // Apply the AnimationClip to the Animator
+                AnimatorOverrideController overrideController = new AnimatorOverrideController(animator.runtimeAnimatorController);
+                overrideController["rebel"] = asset; // Replace "rebel" with your original clip name
+                animator.runtimeAnimatorController = overrideController;
 
-            Debug.Log($"AnimationClip '{assetName}' applied to the Animator.");
+                Debug.Log($"AnimationClip '{assetName}' applied to the Animator.");
+
+                _effect.highlighted = false;
+                Selected = false;
+                _gameManager.PanelController.ForceFill();
+            }
         }
         else
         {

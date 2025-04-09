@@ -1,0 +1,10 @@
+# ninja log v5
+11	804	7651064809278828	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	7141f84e856a057f
+14	816	7651064809409974	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	8a22502bcc318b31
+4	822	7651064809483663	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	1c69f8d35476488e
+25	854	7651064809792399	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	11c456c98a38f30d
+22	918	7651064810426899	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	b751aca250105724
+8	954	7651064810834621	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	53e75a6fa18ae59d
+18	1120	7651064812502684	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	511060d6e717e9d8
+1	1267	7651064813905988	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	46bf119a9b25d527
+1267	1356	7651064814896079	D:/Repositiries/RebellisGit/Rebellis_Runtime_Game/Rebellis_Runtime_Prototype/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/4n65x3y3/obj/arm64-v8a/libgame.so	a09b0f83917e4cdc

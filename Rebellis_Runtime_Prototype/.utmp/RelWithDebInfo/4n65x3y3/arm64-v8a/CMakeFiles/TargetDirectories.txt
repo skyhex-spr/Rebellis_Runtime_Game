@@ -1,0 +1,5 @@
+D:/Repositiries/RebellisGit/Rebellis_Runtime_Game/Rebellis_Runtime_Prototype/.utmp/RelWithDebInfo/4n65x3y3/arm64-v8a/CMakeFiles/edit_cache.dir
+D:/Repositiries/RebellisGit/Rebellis_Runtime_Game/Rebellis_Runtime_Prototype/.utmp/RelWithDebInfo/4n65x3y3/arm64-v8a/CMakeFiles/rebuild_cache.dir
+D:/Repositiries/RebellisGit/Rebellis_Runtime_Game/Rebellis_Runtime_Prototype/.utmp/RelWithDebInfo/4n65x3y3/arm64-v8a/GameActivity/CMakeFiles/game.dir
+D:/Repositiries/RebellisGit/Rebellis_Runtime_Game/Rebellis_Runtime_Prototype/.utmp/RelWithDebInfo/4n65x3y3/arm64-v8a/GameActivity/CMakeFiles/edit_cache.dir
+D:/Repositiries/RebellisGit/Rebellis_Runtime_Game/Rebellis_Runtime_Prototype/.utmp/RelWithDebInfo/4n65x3y3/arm64-v8a/GameActivity/CMakeFiles/rebuild_cache.dir
