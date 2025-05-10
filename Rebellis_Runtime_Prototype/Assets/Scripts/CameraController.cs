@@ -34,14 +34,34 @@ public class CameraController : MonoBehaviour
     {
         if (target != null && !_gameManager.PanelController.IsPanelOpen)
         {
-            if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
+            if (Application.platform == RuntimePlatform.WebGLPlayer)
             {
+                // WebGL-specific device detection
+                if (SystemInfo.deviceType == DeviceType.Handheld)
+                {
+                    // Mobile browser (Android/iOS WebGL)
+                    HandleTouchRotation();
+                    HandlePinchZoom();
+                    HandleMovementJoystick();
+                }
+                else
+                {
+                    // Desktop browser (Windows/macOS WebGL)
+                    HandleMouseRotation();
+                    HandleMouseZoom();
+                    HandleMoveKeyboard();
+                }
+            }
+            else if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
+            {
+                // Native mobile apps
                 HandleTouchRotation();
                 HandlePinchZoom();
                 HandleMovementJoystick();
             }
             else
             {
+                // Native desktop apps
                 HandleMouseRotation();
                 HandleMouseZoom();
                 HandleMoveKeyboard();

@@ -25,6 +25,16 @@ public class PanelController : MonoBehaviour
     public bool IsPanelOpen;
     public bool IsOnprogress;
 
+    [Header("TipsConfigs")]
+    public TextMeshProUGUI tipText;
+    public float fadeDuration = 0.5f;
+    public float visibleDuration = 2f;
+    public string[] tips;
+    public string[] Androidtips;
+
+    private int currentTipIndex = 0;
+    private Sequence tipSequence;
+
     private GameManager _gameManager;
 
     private int targetProgress;
@@ -47,6 +57,35 @@ public class PanelController : MonoBehaviour
         showButton.onClick.AddListener(ShowPanel);
         closeButton.onClick.AddListener(ClosePanel);
         GenerateButton.onClick.AddListener(StartGeneration);
+        if (Application.platform == RuntimePlatform.WebGLPlayer)
+        {
+            if (SystemInfo.deviceType == DeviceType.Handheld)
+                tips = Androidtips;
+        }
+        else if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
+        {
+            tips = Androidtips;
+        }
+
+        ShowNextTip();
+    }
+
+    void ShowNextTip()
+    {
+        if (tipSequence != null) tipSequence.Kill();
+
+        string newTip = tips[currentTipIndex];
+        currentTipIndex = (currentTipIndex + 1) % tips.Length;
+
+        // Set text alpha to 0 instantly before fading in
+        tipText.alpha = 0;
+        tipText.text = newTip;
+
+        tipSequence = DOTween.Sequence();
+        tipSequence.Append(tipText.DOFade(1f, fadeDuration))                // Fade in
+                   .AppendInterval(visibleDuration)                         // Wait
+                   .Append(tipText.DOFade(0f, fadeDuration))                // Fade out
+                   .AppendCallback(ShowNextTip);                            // Show next tip
     }
 
     private void ShowPanel()
