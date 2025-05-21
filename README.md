@@ -18,7 +18,6 @@
 - [Code Reference](#-code-reference)
 - [Built With](#-built-with)
 - [Contributing](#-contributing)
-- [License](#-license)
 - [Contact](#-contact)
 
 ---
@@ -161,12 +160,6 @@ Assets/Rebellis/Script
 
 Contributions, issues and feature requests are welcome!  
 Feel free to open a pull request or submit an issue to improve this project.
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License – see the [LICENSE](LICENSE) file for details.
 
 ---
 
