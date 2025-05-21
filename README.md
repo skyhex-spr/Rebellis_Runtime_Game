@@ -1,6 +1,5 @@
-
 <p align="center">
-  <img src="https://bitnerdstudio.com/rebellis.jpg" alt="Rebellis AI" width="400" height="250">
+  <img src="https://bitnerdstudio.com/rebellis.jpg" alt="Project Logo" width="400">
 </p>
 
 <h1 align="center">Rebellis Runtime Prototype</h1>
@@ -11,6 +10,19 @@
 
 ---
 
+## 📑 Table of Contents
+
+- [Installation](#-installation)
+- [Usage](#-usage)
+- [Features](#-features)
+- [Code Reference](#-code-reference)
+- [Built With](#-built-with)
+- [Contributing](#-contributing)
+- [License](#-license)
+- [Contact](#-contact)
+
+---
+
 ## 📦 Installation
 
 ```bash
@@ -18,7 +30,7 @@
 git clone https://github.com/skyhex-spr/Rebellis_Runtime_Game.git
 
 # Open with Unity
-Open the project with Unity6
+Open the project in Unity 6 or later.
 ```
 
 📁 **Project Configuration Path:**
@@ -29,10 +41,9 @@ Assets/Rebellis/RebellisSetting
 
 🔐 **Setup Rebellis Account:**
 
-Go to the path above and enter your email and password that you used to sign up.
+Go to the path above and enter your email and password that you used during account registration.
 
 ---
-
 
 ## 🚀 Usage
 
@@ -59,9 +70,8 @@ Click the **Generate** button, enter your prompt, and wait for the system to app
 - 🧠 **Dynamic NPC Responses** – Enhance non-player characters with intelligent and context-aware reactions.
 - 🎭 **Adaptive Character Behaviors** – Bring your characters to life with dynamic and responsive behavior logic.
 
-🎯 **Looking to generate animations using AI or editor tools?**
-Explore the official Unity plugin:
-👉 [Rebellis Character Hub Unity Plugin](https://character-hub.rebellis.ai/apihub/unity)
+🔧 **Need AI-powered animation tools?**  
+Try our Unity plugin: [Rebellis Character Hub](https://character-hub.rebellis.ai/apihub/unity)
 
 ---
 
@@ -69,7 +79,7 @@ Explore the official Unity plugin:
 
 This section provides insights into key classes and runtime logic within the Rebellis system.
 
-### 🧱 `RebelisAPIHandler`
+### 📡 `RebelisAPIHandler`
 Handles all core interactions with the Rebellis AI API, including login, prompt submission, FBX/Unity file generation, and data retrieval.
 
 ```csharp
@@ -83,7 +93,7 @@ public class RebelisAPIHandler : MonoBehaviour {
 }
 ```
 
-> 🧩 This class is responsible for sending authentication credentials, submitting animation prompts, and downloading the appropriate assets from Rebellis servers.
+> 📡 This class is responsible for sending authentication credentials, submitting animation prompts, and downloading the appropriate assets from Rebellis servers.
 
 ### 🧠 `RebellisAnimatorController`
 This class listens for Unity asset events from the API handler and dynamically loads and applies downloaded animation clips at runtime.
@@ -140,12 +150,25 @@ Assets/Rebellis/Script
 
 ---
 
-## 🚰️ Built With
+## 🧰 Built With
 
 - [Rebellis AI](https://demo.rebellis.ai/)
 - [Unity 6](https://unity.com/releases/unity-6)
+
 ---
 
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!  
+Feel free to open a pull request or submit an issue to improve this project.
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License – see the [LICENSE](LICENSE) file for details.
+
+---
 
 ## 📬 Contact
 
