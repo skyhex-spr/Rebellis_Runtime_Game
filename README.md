@@ -70,7 +70,7 @@ Click the **Generate** button, enter your prompt, and wait for the system to app
 - 🎭 **Adaptive Character Behaviors** – Bring your characters to life with dynamic and responsive behavior logic.
 
 🔧 **Need AI-powered animation tools?**  
-Try our Unity plugin: [Rebellis Character Hub](https://character-hub.rebellis.ai/apihub/unity)
+Try our Unity plugin: [Rebellis Unity-editor plugin](https://app.rebellis.ai/apihub/unity)
 
 ---
 
